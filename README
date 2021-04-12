@@ -1,0 +1,51 @@
+edenhorka
+
+=============================
+=      File description     =
+=============================
+Bucket.java - a wrapper class of linked list of strings represents a cell in an open hash set.
+             This class implementsSimpleSet and contains delegation calls. main methods are add()
+             , contains(), delete() and size().
+HashTableCell.java - represents a cell in an closed hash table (can only contain one string).
+                     Each cell object has a a value (String) and a boolean indicates if the cell is deleted.
+
+=============================
+=  Implementation details   =
+=============================
+1. OpenHashSet implementation : The class extends the abstract class SimpleHashSet, each open hash set is
+represented by an array of Buckets while each Bucket is a cell. Each cell can have any number of values as
+as long as the load factor does not exceed the limit.
+
+2. ClosedHashSet deletion implementation: First, the algorithm checks if the value is already contained, by
+probing its clamp. If the value is contained, the algorithm marks it as deleted by setting the boolean
+isDeleted() to true. Than, it updates the size of the set and checks if rehash is need (meaning, if after the
+deletion the load factor exceeds the lower load factor).
+
+=============================
+=      Analyzer Results     =
+=============================
+
+addition, organize the results in the README file in the following manner:
+1. For data1.txt: the time it took to initialize each data structure with its words. *TreeSet* the fastest.
+2. Same for data2.txt. *HashSet*
+3. For each data structure: the time it took to initialize with the contents of data1.txt compared to
+the time it took to initialize with data2.txt. *HashSet*
+4. Compare the different data structures for contains(”hi”) after data1.txt initialization. *TreeSet* the
+fastest.
+5. Compare the data structures for contains(“-13170890158”) after data1.txt initialization. *TreeSet*
+the fastest.
+
+Discussion:
+
+- OpenHashSet - strengths: efficient in adding many elements.
+                weaknesses: inefficient to search elements or iterates the set.
+- ClosedHashSet - strengths: efficient in searching and deleting elements.
+                  weaknesses: inefficient in adding many elements and iteration.
+- HashSet - strengths: good for performing quick search and delete operations.
+            weaknesses: if iteration complexity is important, hash set is not a good implementation.
+- TreeSet - strengths: constant and efficient time of performing add,search and delete operation.
+            weaknesses: not so efficient iteration.
+- LinkList - strengths: constant time of O(1)  in add operation.
+             weaknesses: less efficient at performing delete and search operation.
+
+I didn't expect the data1 inserting performance of linked list and closed hash set to be that bad.
